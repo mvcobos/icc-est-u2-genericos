@@ -35,10 +35,10 @@ public class App {
 
         Persona[] people = {
             new Persona("Paula", 20),
-            new Persona("Diego", 36),
-            new Persona("Rosa", 27),
+            new Persona("Diego", 9),
+            new Persona("Rosa", 12),
             new Persona("Rubén", 44),
-            new Persona("Teresa", 33),
+            new Persona("Teresa", 18),
             new Persona("Iván", 17),
             new Persona("Julia", 21),
             new Persona("Adriana", 39),
@@ -47,19 +47,33 @@ public class App {
         };
 
         
-        Par<String, Integer> parMayorEdad = new Par<>();
-        Par<Integer, String> parMenorEdad = new Par<>();
 
-        Persona[] arrMayor = persona.mayoresDeEdad(people);
+
+        
+        int contMayor = persona.tamanioMayor(people);
+        Persona[] arrMayor = persona.mayoresDeEdad(people, contMayor);
+
+        int contMenor = persona.tamanioMenor(people);
+        Persona[] arrMenor= persona.menoresDeEdad(people, contMenor);
+
+
+        Par<String, Integer>[] parMayorEdad = new Par[contMayor];
+        Par<Integer, String>[] parMenorEdad = new Par[contMenor];
+
         System.out.println("MAYORES DE EDAD");
-        
-        for(Persona elemento: arrMayor){
-            parMayorEdad.establecerClave(elemento.getNombre());
-            parMayorEdad.establecerValor(elemento.getEdad());
-            System.out.println(parMayorEdad.obtenerClave() + " - " + parMayorEdad.obtenerValor());
+        for (int i = 0; i < arrMayor.length; i++){
+            parMayorEdad[i] = new Par<>();
+            parMayorEdad[i].establecerClave(arrMayor[i].getNombre());
+            parMayorEdad[i].establecerValor(arrMayor[i].getEdad());
+            System.out.println(parMayorEdad[i].obtenerClave() + " - " + parMayorEdad[i].obtenerValor());
         }
-
         
-
+        System.out.println("MENORES DE EDAD");
+        for (int i = 0; i < arrMenor.length; i++){
+            parMenorEdad[i] = new Par<>();
+            parMenorEdad[i].establecerClave(arrMenor[i].getEdad());
+            parMenorEdad[i].establecerValor(arrMenor[i].getNombre());
+            System.out.println( parMenorEdad[i].obtenerClave() + " - " + parMenorEdad[i].obtenerValor());
+        }
     }
 }

@@ -27,82 +27,50 @@ public class Persona {
     }
 
 
-    public int tamanio(Persona[] person){
+    public int tamanioMayor(Persona[] person){
         int contMayor = 0;
         for(Persona elemento: person){
             if(elemento.getEdad() >= 18){
                 contMayor++;
-            } else{
-                
-            }
+            } 
         }
         return contMayor;
     }
 
-
-    public Persona[] mayoresDeEdad(Persona[] persona){
-        int contMayor = 0;
-        for(Persona elemento: persona){
-            if(elemento.getEdad() >= 18){
-                contMayor++;
-            }
-        }
-
-
-        Persona[] arregloMayores = new Persona[contMayor];
-        for (int i = 0; i < persona.length; i++){
-            if(persona[i].getEdad() >= 18){
-                arregloMayores[i].setEdad(persona[i].getEdad()); 
-                arregloMayores[i].setNombre(persona[i].getNombre()); 
-            }
-        }
-
-        return arregloMayores;
-    }
-
-    public Persona[] menoresDeEdad(Persona[] persona){
+    public int tamanioMenor(Persona[] person){
         int contMenor = 0;
-        for(Persona elemento: persona){
+        for(Persona elemento: person){
             if(elemento.getEdad() < 18){
                 contMenor++;
-            }
+            } 
         }
-
-
-        Persona[] arrMenores = new Persona[contMenor];
-        for (int i = 0; i < persona.length; i++){
-            if(persona[i].getEdad() < 18){
-                arrMenores[i].setEdad(persona[i].getEdad());
-                arrMenores[i].setNombre(persona[i].getNombre());  
-            }
-        }
-
-        return arrMenores;
+        return contMenor;
     }
 
-   /*  public Persona[] menoresDeEdad(Persona[] persona){
-        int cont = 0;
-        for(Persona elemento: persona){
-            if(elemento.getEdad() < 18){
-                cont++;
+
+    public Persona[] mayoresDeEdad(Persona[] personas, int contMayor) {
+        Persona[] arregloMayores = new Persona[contMayor];
+        int f = 0;
+        for (int i = 0; i < personas.length; i++) {
+            if (personas[i].getEdad() >= 18) {
+                arregloMayores[f] = personas[i]; 
+                f++;
             }
         }
+        return arregloMayores;
+    }
+    
 
-        Persona[] arregloMenores = new Persona[cont];
-        int i = 0;
-        for(Persona elemento: persona){
-            if(elemento.getEdad() < 18){
-                arregloMenores[i].setEdad(elemento.getEdad()); 
-                i++;
+    public Persona[] menoresDeEdad(Persona[] personas, int contMenor){
+        Persona[] arrMenores = new Persona[contMenor];
+        int j = 0;
+        for (int i = 0; i < personas.length; i++) {
+            if (personas[i].getEdad() < 18) {
+                arrMenores[j] = personas[i]; 
+                j++;
             }
         }
-
-        return arregloMenores;
-    }*/
-
-    @Override
-    public String toString(){
-        return "Persona{" + " Nombre=" + nombre + ", edad=" + edad  + "}"; 
+        return arrMenores;
     }
     
 
